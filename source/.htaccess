@@ -1,0 +1,185 @@
+RewriteEngine On
+<Files "clientPrivate.pem">  
+  Order Allow,Deny
+  Deny from all
+</Files>
+<Files "clientPulic.pem">  
+  Order Allow,Deny
+  Deny from all
+</Files>
+<Files "serverPrivate.pem">  
+  Order Allow,Deny
+  Deny from all
+</Files>
+<Files "serverPublic.pem">  
+  Order Allow,Deny
+  Deny from all
+</Files>
+<Files .env>
+    Order allow,deny
+    Deny from all
+</Files>
+<IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews -Indexes
+    </IfModule>
+</IfModule>
+RewriteRule ^Auth/Profile/ChangePassword public/client/Profile-ChangePassword.php [L]
+RewriteRule ^Auth/Profile$ public/client/Profile.php [L]
+RewriteRule ^auth/gencaptcha$ public/client/Captcha.php [L]
+RewriteRule ^auth/gencaptchav2$ public/client/Captchav2.php [L]
+RewriteRule ^Auth/Register$ public/client/Register.php [L]
+RewriteRule ^Auth/Login$ public/client/Login.php [L]
+RewriteRule ^Auth/Logout$ public/client/Logout.php [L]
+RewriteRule ^Auth/ForgotPassword$ public/client/ForgotPassword.php [L]
+RewriteRule ^Auth/ChangePassword$ public/client/ChangePassword.php [L]
+RewriteRule ^Accounts/([A-Za-z0-9-]+) public/client/Accounts.php?id=$1 [L]
+RewriteRule ^Groups/([A-Za-z0-9-]+) public/client/Groups.php?id=$1 [L]
+RewriteRule ^views/account/([A-Za-z0-9-]+) public/client/Orders.php?id=$1 [L]
+RewriteRule ^History$ public/client/History.php [L]
+RewriteRule ^2fa$ public/client/Security.php [L]
+RewriteRule ^auth/verify/([A-Za-z0-9-]+) public/client/Verify.php?token=$1 [L]
+RewriteRule ^Blogs$ public/client/Blogs.php [L]
+RewriteRule ^Logs$ public/client/Logs.php [L]
+RewriteRule ^blog/([A-Za-z0-9-]+) public/client/ViewBlog.php?id=$1 [L]
+RewriteRule ^nap-the-cao$ public/client/NapThe.php [L]
+RewriteRule ^bien-dong-so-du$ public/client/BienDongSoDu.php [L]
+RewriteRule ^nap-bank$ public/client/Recharge-Bank.php [L]
+RewriteRule ^dich-vu/([A-Za-z0-9-]+) public/client/CayThue.php?id=$1 [L]
+RewriteRule ^dich-vu-auto/ban-vang-nro-lau$ public/client/coin/index2.php [L]
+RewriteRule ^dich-vu-auto/ban-vang-nro$ public/client/coin/index.php [L]
+RewriteRule ^dich-vu-auto/ban-ngoc-nro$ public/client/gem/index.php [L]
+RewriteRule ^dich-vu-auto/ky-ngoc-nro$ public/client/gem/index2.php [L]
+RewriteRule ^History/Cay-thue$ public/client/HistoryCayThue.php [L]
+RewriteRule ^History/Minigame$ public/client/HistoryMinigame.php [L]
+# RewriteRule ^history/coin-nro$ public/client/HistoryCoinNro.php [L]
+# RewriteRule ^history/gem-nro$ public/client/HistoryGemNro.php [L]
+# RewriteRule ^history/gem-nro$ public/client/HistoryGemNro.php [L]
+# RewriteRule ^user/diamond$ public/client/diamond.php [L]
+RewriteRule ^account-game$ public/client/Accounts.php [L]
+
+RewriteRule ^random/([a-zA-Z0-9_-]+)$ views/account/random.php?type=$1 [L]
+RewriteRule ^vongquay/([a-zA-Z0-9_-]+)$ public/client/minigame/wheel.php?type=$1 [L]
+RewriteRule ^lathinh/([a-zA-Z0-9_-]+)$ public/client/minigame/lathinh.php?type=$1 [L]
+RewriteRule ^moqua/([a-zA-Z0-9_-]+)$ public/client/minigame/dapheo.php?type=$1 [L]
+RewriteRule ^bingo3/([a-zA-Z0-9_-]+)$ public/client/minigame/bingo.php?type=$1 [L]
+
+RewriteRule ^service/([a-zA-Z0-9_-]+)$ public/client/banvangngoc/index.php?type=$1 [L]
+RewriteRule ^api/v1/ordercoin/([a-zA-Z0-9_-]+)$ api/order-coin.php?player=$1 [L]
+RewriteRule ^api/v1/updateordercoin/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)$ api/update-order-coin.php?id=$1&player=$2 [L]
+RewriteRule ^api/v1/updatebotcoin$ api/updatebotcoin.php [L]
+
+RewriteRule ^api/v1/ordergem/([a-zA-Z0-9_-]+)$ api/order-gem.php?player=$1 [L]
+RewriteRule ^api/v1/updateordergem/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)$ api/update-order-gem.php?id=$1&player=$2&status=$3 [L]
+RewriteRule ^api/v1/updatebotgem$ api/updatebotgem.php [L]
+
+RewriteRule ^Minigame/Wheel$ ajaxs/Minigame.php?numrolllop=$1&typeRoll=$2&type=$3 [L]
+RewriteRule ^Model/Withdraw$ ajaxs/Withdraw.php [L]
+RewriteRule ^Model/Withdraw/Ctv$ ajaxs/ctv/Withdraw.php [L]
+RewriteRule ^Model/CreateGroup$ ajaxs/admin/CreateGroup.php [L]
+RewriteRule ^Model/EditGroup$ ajaxs/admin/EditGroup.php [L]
+RewriteRule ^Model/Account/Upload$ ajaxs/admin/account/UploadAccount.php [L]
+RewriteRule ^Model/Account/UploadReward$ ajaxs/admin/account/UploadReward.php [L]
+RewriteRule ^Model/Admin/Account/Edit$ ajaxs/admin/account/EditAccount.php [L]
+RewriteRule ^Model/Admin/Account/Delete$ ajaxs/admin/account/DeleteAccount.php [L]
+RewriteRule ^Model/Admin/DeleteBank$ ajaxs/admin/DeleteBank.php [L]
+RewriteRule ^List/Account$ ajaxs/load/ListAccount.php [L]
+RewriteRule ^Model/Admin/BotCoin/Delete$ ajaxs/admin/toolgame/coin/DeleteBot.php [L]
+RewriteRule ^Model/Admin/BotNapCoin/Delete$ ajaxs/admin/toolgame/coin/DeleteBotNap.php [L]
+RewriteRule ^Model/Admin/BotNapCoinLau/Delete$ ajaxs/admin/toolgame/coin/DeleteBotNapLau.php [L]
+RewriteRule ^Model/Admin/BotGem/Delete$ ajaxs/admin/toolgame/gem/DeleteBot.php [L]
+RewriteRule ^Model/Admin/BotNapGem/Delete$ ajaxs/admin/toolgame/gem/DeleteBotNap.php [L]
+RewriteRule ^Model/Admin/BotNapGemApi/Delete$ ajaxs/admin/toolgame/gem/DeleteBotNapApi.php [L]
+RewriteRule ^Model/Admin/DeleteUser$ ajaxs/admin/DeleteUser.php [L]
+RewriteRule ^Model/Admin/DeleteBlog$ ajaxs/admin/DeleteBlog.php [L]
+RewriteRule ^Model/Admin/DeleteCategory$ ajaxs/admin/DeleteCategory.php [L]
+RewriteRule ^Model/Admin/DeleteTag$ ajaxs/admin/DeleteTag.php [L]
+RewriteRule ^Model/Admin/DeleteGroupCayThue$ ajaxs/admin/DeleteGroupCayThue.php [L]
+RewriteRule ^Model/Admin/ChangeHistoryDiamond$ ajaxs/admin/changeHistoryDiamond.php [L]
+RewriteRule ^Model/Admin/UpdateWithdraw$ ajaxs/admin/UpdateWithdraw.php [L]
+RewriteRule ^Model/Admin/ChangeHistoryNroLau$ ajaxs/admin/ChangeHistoryNroLau.php [L]
+RewriteRule ^Model/Pay$ ajaxs/pay.php [L]
+
+RewriteRule ^Model/Ctv/Account/Upload$ ajaxs/ctv/account/UploadAccount.php [L]
+RewriteRule ^Model/Ctv/Account/Edit$ ajaxs/ctv/account/EditAccount.php [L]
+RewriteRule ^Model/Ctv/Account/Delete$ ajaxs/ctv/account/DeleteAccount.php [L]
+
+RewriteRule ^Admin$ public/admin/Home.php [L]
+RewriteRule ^Admin/Home$ public/admin/Home.php [L]
+RewriteRule ^Admin/Users$ public/admin/Users.php [L]
+RewriteRule ^Admin/Telecom$ public/admin/telecom.php [L]
+RewriteRule ^Admin/Charge-report$ public/admin/charge-report.php [L]
+RewriteRule ^Admin/User/Edit/([A-Za-z0-9-]+) public/admin/EditUser.php?id=$1 [L]
+RewriteRule ^Admin/Login-User/([A-Za-z0-9-]+)$ public/admin/LoginUser.php?id=$1 [L]
+RewriteRule ^Admin/Advertise$ public/admin/Advertise.php [L]
+RewriteRule ^Admin/Setting$ public/admin/Setting.php [L]
+RewriteRule ^Admin/Theme$ public/admin/Theme.php [L]
+RewriteRule ^Admin/Cards$ public/admin/Cards.php [L]
+RewriteRule ^Admin/Bank$ public/admin/Bank.php [L]
+RewriteRule ^Admin/Bank/Transaction$ public/admin/TransactionBank.php [L]
+RewriteRule ^Admin/Bank/Edit/([A-Za-z0-9-]+)$ public/admin/EditBank.php?id=$1 [L]
+RewriteRule ^Admin/Event$ public/admin/Event.php [L]
+RewriteRule ^Admin/Blog$ public/admin/Blog.php [L]
+RewriteRule ^Admin/Blog/Edit/([A-Za-z0-9-]+) public/admin/EditBlog.php?id=$1 [L]
+RewriteRule ^Admin/Blog-Add$ public/admin/Blog-Add.php [L]
+RewriteRule ^Admin/Category$ public/admin/Category.php [L]
+RewriteRule ^Admin/Category/Edit/([A-Za-z0-9-]+) public/admin/EditCategory.php?id=$1 [L]
+RewriteRule ^Admin/Groups/([A-Za-z0-9-]+) public/admin/Groups.php?id=$1 [L]
+RewriteRule ^Admin/Group/Edit/([A-Za-z0-9-]+) public/admin/EditGroup.php?id=$1 [L]
+RewriteRule ^Admin/Accounts/([A-Za-z0-9-]+) public/admin/Accounts.php?id=$1 [L]
+RewriteRule ^Admin/Account/Edit/([A-Za-z0-9-]+) public/admin/EditAccount.php?id=$1 [L]
+RewriteRule ^Admin/Account-Sold$ public/admin/Account-Sold.php [L]
+RewriteRule ^Admin/Tag$ public/admin/Tag.php [L]
+RewriteRule ^Admin/Storage$ public/admin/Storage.php [L]
+RewriteRule ^Admin/Orders/Cay-thue$ public/admin/DonHangCayThue.php [L]
+RewriteRule ^Admin/Category/Cay-thue$ public/admin/CategoryCayThue.php [L]
+RewriteRule ^Admin/Category/Cay-thue/Edit/([A-Za-z0-9-]+) public/admin/EditCategoryCayThue.php?id=$1 [L]
+RewriteRule ^Admin/Category/NhomCayThue/([A-Za-z0-9-]+) public/admin/GroupsCayThue.php?id=$1 [L]
+RewriteRule ^Admin/History/Event$ public/admin/HistoryEvent.php [L]
+RewriteRule ^Admin/History/Diamond$ public/admin/HistoryDiamond.php [L]
+RewriteRule ^Admin/Minigame/Create$ public/admin/CreateMinigame.php [L]
+RewriteRule ^Admin/Minigame/List$ public/admin/ListMinigame.php [L]
+RewriteRule ^Admin/Minigame/Edit/([A-Za-z0-9-]+) public/admin/EditMinigame.php?id=$1 [L]
+RewriteRule ^Admin/Minigame/ListAccountMiniGame$ public/admin/ListAccountMiniGame.php [L]
+RewriteRule ^Admin/WithdrawCTV/Config$ public/admin/withdrawctv/config.php [L]
+RewriteRule ^Admin/WithdrawCTV/Orders$ public/admin/withdrawctv/orders.php [L]
+
+RewriteRule ^Admin/toolgame/nrocoin-usernap$ public/admin/toolgame/coin/list.php [L]
+RewriteRule ^Admin/toolgame/nrocoin-usernap/create$ public/admin/toolgame/coin/create.php [L]
+RewriteRule ^Admin/toolgame/nrocoin-usernap/edit/([A-Za-z0-9-]+)$ public/admin/toolgame/coin/editusernap.php?id=$1 [L]
+RewriteRule ^Admin/toolgame/nrocoin-info-bot$ public/admin/toolgame/coin/infobot.php [L]
+RewriteRule ^Admin/toolgame/nrocoin-info-bot/create$ public/admin/toolgame/coin/createinfobot.php [L]
+RewriteRule ^Admin/toolgame/nrocoin-info-bot/edit/([A-Za-z0-9-]+)$ public/admin/toolgame/coin/editbot.php?id=$1 [L]
+RewriteRule ^Admin/toolgame/nrocoin-logtransaction$ public/admin/toolgame/coin/transaction.php [L]
+
+RewriteRule ^Admin/toolgame/nrocoinlau-usernap$ public/admin/toolgame/coinlau/list.php [L]
+RewriteRule ^Admin/toolgame/nrocoinlau-usernap/create$ public/admin/toolgame/coinlau/create.php [L]
+RewriteRule ^Admin/toolgame/nrocoinlau-usernap/edit/([A-Za-z0-9-]+)$ public/admin/toolgame/coinlau/editusernap.php?id=$1 [L]
+RewriteRule ^Admin/toolgame/nrocoinlau-info-bot$ public/admin/toolgame/coinlau/infobot.php [L]
+RewriteRule ^Admin/toolgame/nrocoinlau-info-bot/create$ public/admin/toolgame/coinlau/createinfobot.php [L]
+RewriteRule ^Admin/toolgame/nrocoinlau-info-bot/edit/([A-Za-z0-9-]+)$ public/admin/toolgame/coinlau/editbot.php?id=$1 [L]
+RewriteRule ^Admin/toolgame/nrocoinlau-logtransaction$ public/admin/toolgame/coinlau/transaction.php [L]
+
+RewriteRule ^Admin/toolgame/nrogem-usernap$ public/admin/toolgame/gem/list.php [L]
+RewriteRule ^Admin/toolgame/nrogem-usernap/create$ public/admin/toolgame/gem/create.php [L]
+RewriteRule ^Admin/toolgame/nrogem-usernap/edit/([A-Za-z0-9-]+)$ public/admin/toolgame/gem/editusernap.php?id=$1 [L]
+RewriteRule ^Admin/toolgame/nrogem-info-bot$ public/admin/toolgame/gem/infobot.php [L]
+RewriteRule ^Admin/toolgame/nrogem-info-bot/create$ public/admin/toolgame/gem/createinfobot.php [L]
+RewriteRule ^Admin/toolgame/nrogem-info-bot/edit/([A-Za-z0-9-]+)$ public/admin/toolgame/gem/editbot.php?id=$1 [L]
+RewriteRule ^Admin/toolgame/nrogem-logtransaction$ public/admin/toolgame/gem/transaction.php [L]
+
+RewriteRule ^Admin/toolgame/nrogem-api-usernap$ public/admin/toolgame/gemapi/list.php [L]
+RewriteRule ^Admin/toolgame/nrogem-api-usernap/create$ public/admin/toolgame/gemapi/create.php [L]
+RewriteRule ^Admin/toolgame/nrogem-api-usernap/edit/([A-Za-z0-9-]+)$ public/admin/toolgame/gemapi/editusernap.php?id=$1 [L]
+RewriteRule ^Admin/toolgame/nrogem-api-info-bot$ public/admin/toolgame/gemapi/infobot.php [L]
+RewriteRule ^Admin/toolgame/nrogem-api-info-bot/create$ public/admin/toolgame/gemapi/createinfobot.php [L]
+RewriteRule ^Admin/toolgame/nrogem-api-info-bot/edit/([A-Za-z0-9-]+)$ public/admin/toolgame/gemapi/editbot.php?id=$1 [L]
+RewriteRule ^Admin/toolgame/nrogem-api-logtransaction$ public/admin/toolgame/gemapi/transaction.php [L]
+
+RewriteRule ^Ctv/Home$ public/ctv/Home.php [L]
+RewriteRule ^Ctv/Category$ public/ctv/Category.php [L]
+RewriteRule ^Ctv/Groups/([A-Za-z0-9-]+) public/ctv/Groups.php?id=$1 [L]
+RewriteRule ^Ctv/Accounts/([A-Za-z0-9-]+) public/ctv/Accounts.php?id=$1 [L]
+RewriteRule ^Ctv/Account/Edit/([A-Za-z0-9-]+) public/ctv/EditAccount.php?id=$1 [L]
+RewriteRule ^Ctv/Account-Sold$ public/ctv/Account-Sold.php [L]
+RewriteRule ^Ctv/Withdraw$ public/ctv/Withdraw.php [L]

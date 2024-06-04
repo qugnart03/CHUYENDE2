@@ -1,0 +1,7 @@
+tid => FT23116666109914 description => CUSTOMER cms2466. TU: NGUYEN VAN THONG () amount => 30000 
+tid => FT23116666109914 description => CUSTOMER cms2466. TU: NGUYEN VAN THONG () amount => 30000 
+tid => FT23118096300725 description => CUSTOMER napxu9 Trace 151293 (9) amount => 1000 
+tid => FT23116666109914 description => CUSTOMER cms2466. TU: NGUYEN VAN THONG () amount => 30000 
+tid => FT23156368078017 description => CUSTOMER napxu11 Trace 958702 (11) amount => 2000 
+tid => FT23156574612867 description => CUSTOMER cms2525 Trace 017886 () amount => 80000 
+tid => FT23156769593093 description => CUSTOMER cron87 Trace 473966 () amount => 20000 
